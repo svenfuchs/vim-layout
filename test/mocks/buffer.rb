@@ -44,8 +44,13 @@ module Mocks
 
     attr_accessor :line_number
 
-    def initialize(line_number = 1)
+    def initialize(name = '', line_number = 1)
+      @name = name
       @line_number = line_number
+    end
+
+    def name
+      @name
     end
 
     def number

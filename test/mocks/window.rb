@@ -19,26 +19,34 @@
 module Mocks
   class Window
     class << self
+      attr_accessor :current_ix
+
       def [](ix)
         windows[ix]
       end
 
       def current
-        windows[current_number]
+        windows[current_ix]
       end
 
       def count
         windows.size
       end
 
-      def clear
-        @@windows = nil
-      end
+      # internal
 
-      protected
+        def reset
+          @current_ix = 0
+          @@windows = nil
+        end
 
-        def current_number
-          @@current_number ||= 0
+        def current_ix
+          @current_ix ||= 0
+        end
+
+        def current_ix=(ix)
+          @current_ix = ix
+          $curwin = current
         end
 
         def windows
@@ -49,8 +57,8 @@ module Mocks
     attr_reader :buffer
     attr_accessor :height, :width, :cursor
 
-    def initialize
-      @buffer = Buffer.new
+    def initialize(path = nil)
+      @buffer = Buffer.new(path)
       @cursor = [1, 1]
       @width  = 300
       @height = 80

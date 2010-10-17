@@ -7,10 +7,6 @@ class MockWindowTest < Test::Unit::TestCase
     @window = Window.new
   end
 
-  def teardown
-    Window.clear
-  end
-
   test 'Window.current returns the current window object' do
     assert Window.current.is_a?(Window)
   end

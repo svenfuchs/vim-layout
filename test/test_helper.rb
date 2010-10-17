@@ -5,10 +5,14 @@ require 'rubygems'
 require 'test/unit'
 require 'mocha'
 require 'test_declarative'
-require 'vim/window'
+require 'vim'
+require 'mocks'
+include Mocks
 
 class Test::Unit::TestCase
-  autoload :Mocks, 'mocks'
-  include Mocks
-end
+  Window.send(:include, Vim::Window)
 
+  def teardown
+    Window.reset
+  end
+end

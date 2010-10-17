@@ -7,10 +7,6 @@ class MockBufferTest < Test::Unit::TestCase
     @buffer = Window.new.buffer
   end
 
-  def teardown
-    Window.clear
-  end
-
   test 'Buffer.current returns the current buffer object' do
     assert Buffer.current.is_a?(Buffer)
   end
