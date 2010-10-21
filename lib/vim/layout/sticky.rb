@@ -9,6 +9,7 @@ module Vim
         def included(base)
           position!
           cmd 'au WinLeave * :ruby Vim::Window.previous = $curwin'
+          cmd 'au WinEnter * :ruby Vim::Layout::Sticky.position!'
           %w(H J K L).each { |key| map_wincmd(key) }
         end
 
@@ -54,7 +55,6 @@ module Vim
           position!
         end
       end
-
     end
   end
 end
