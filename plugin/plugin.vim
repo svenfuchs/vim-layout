@@ -10,5 +10,5 @@ ruby <<
   end
 
   $:.unshift("#{Vim.runtime_path('vim-layout')}/lib").uniq!
-  load 'vim/layout.rb'
+  require 'vim/layout.rb'
 .
