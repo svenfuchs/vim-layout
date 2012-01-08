@@ -13,6 +13,10 @@ module Vim
         end
       end
 
+      def last
+        self[count - 1]
+      end
+
       def index(window)
         each_with_index { |w, ix| return ix if w == window }
         nil
@@ -25,6 +29,15 @@ module Vim
       def open?(path)
         !!find(path)
       end
+
+      # def previous!
+      #   block_events { cmd('wincmd p') }
+      # end
+
+      # def previous
+      #   previous!
+      #   $curwin.tap { previous! }
+      # end
 
       def previous!
         block_events { cmd('wincmd p') }
